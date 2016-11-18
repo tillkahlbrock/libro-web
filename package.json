@@ -7,7 +7,7 @@
     "node": "6.3.0"
   },
   "scripts": {
-    "postinstall": "node_modules/.bin/webpack --config webpack.config.js",
+    "postinstall": "node_modules/.bin/webpack --config webpack.config.js -p",
     "start": "node index.js",
     "test": "node_modules/.bin/karma start --single-run --no-auto-watch karma.config.js",
     "test:watch": "node_modules/.bin/karma start --auto-watch --no-single-run karma.config.js",
