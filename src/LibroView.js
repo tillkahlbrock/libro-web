@@ -11,7 +11,7 @@ export default class LibroView {
     constructor() {
 
         const middleware = [thunk];
-        if (true) {
+        if (DEBUG) {
             middleware.push(createLogger({
                 level: 'info',
             }));
