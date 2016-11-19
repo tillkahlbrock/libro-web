@@ -5,6 +5,7 @@ const initialState = {
     username: null,
     password: null,
     loggedIn: false,
+    mediaList: [],
 };
 
 export default (state = initialState, action) => {

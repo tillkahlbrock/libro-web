@@ -10,6 +10,7 @@ describe('Layout', () => {
             username: null,
             password: null,
             loggedIn: false,
+            mediaList: [],
             onUsernameInputChange: () => null,
             onPasswordInputChange: () => null,
             onLoginButtonClick: () => null,
@@ -36,6 +37,31 @@ describe('Layout', () => {
         );
 
         expect(wrapper.find('Login').length).toEqual(0);
+    });
+
+    it('should notify the user if no media is borrowed', () => {
+        const wrapper = shallow(
+            <Layout
+                { ...defaultProps }
+                loggedIn={true}
+                mediaList={[]}
+            />
+        );
+
+        expect(wrapper.find('.alert').first().text()).toEqual('Keine Medien ausgeliehen.');
+        expect(wrapper.find('MediaList').length).toEqual(0);
+    });
+
+    it('should show a list of borrowed media', () => {
+        const wrapper = shallow(
+            <Layout
+                { ...defaultProps }
+                loggedIn={true}
+                mediaList={[{ key1: 'some', key2: 'media' }]}
+            />
+        );
+
+        expect(wrapper.find('MediaList').length).toEqual(1);
     });
 });
 
