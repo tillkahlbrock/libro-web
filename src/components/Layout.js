@@ -1,21 +1,40 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
 import Login from './Login';
+import * as actions from '../actions';
 
 const Layout  = props => {
     const {
         username,
-        password,
+        loggedIn,
+
+        onUsernameInputChange,
+        onPasswordInputChange,
+        onLoginButtonClick,
     } = props;
 
-    const showLogin = !(username && password);
     return <div>
-        { showLogin && <Login/>}
+        { loggedIn ?
+            <div>User {username} logged in successfully!</div> :
+            <Login
+                onUsernameInputChange={onUsernameInputChange}
+                onPasswordInputChange={onPasswordInputChange}
+                onLoginButtonClick={onLoginButtonClick}
+            />
+        }
     </div>;
 };
 
-Layout.propTypes = {};
+Layout.propTypes = {
+    username: PropTypes.string,
+    password: PropTypes.string,
+    loggedIn: PropTypes.bool.isRequired,
+    onUsernameInputChange: PropTypes.func.isRequired,
+    onPasswordInputChange: PropTypes.func.isRequired,
+    onLoginButtonClick: PropTypes.func.isRequired,
+};
 
 export { Layout };
 
@@ -24,14 +43,22 @@ export default () => {
         const {
             username,
             password,
+            loggedIn,
         } = state;
+
         return {
-            test: state.test,
+            username,
+            password,
+            loggedIn,
         };
     };
 
     const mapDispatchToProps = dispatch => (
-        bindActionCreators({}, dispatch)
+        bindActionCreators({
+            onUsernameInputChange: actions.changeUsernameInput,
+            onPasswordInputChange: actions.changePasswordInput,
+            onLoginButtonClick: actions.login,
+        }, dispatch)
     );
 
     return connect(mapStateToProps, mapDispatchToProps)(Layout);
