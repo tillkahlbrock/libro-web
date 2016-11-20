@@ -21,6 +21,9 @@ export default (state = initialState, action) => {
         case actions.LOGIN_REQUESTED:
             return assign({}, state, { loggedIn: true });
 
+        case actions.FETCH_INITIAL_DATA_SUCCEEDED:
+            return assign({}, state, { mediaList: payload.mediaList });
+
         default:
             return assign({}, state);
     }
