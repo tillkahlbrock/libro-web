@@ -8,7 +8,6 @@ const MediaList = props => {
         <table className="table table-striped">
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Fällig</th>
                     <th>Titel</th>
                     <th>Verlängert</th>
@@ -17,7 +16,6 @@ const MediaList = props => {
             <tbody>
                 {map(mediaList, medium => {
                     return (<tr key={medium.id}>
-                        <td>{medium.id}</td>
                         <td>{medium.date}</td>
                         <td>{medium.title}</td>
                         <td>{medium.renewal}</td>

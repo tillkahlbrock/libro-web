@@ -3,13 +3,6 @@ import { shallow } from 'enzyme';
 import MediaList from 'components/MediaList';
 
 describe('MediaList', () => {
-    let defaultProps;
-
-    beforeEach(() => {
-        defaultProps = {
-            mediaList: [],
-        };
-    });
 
     it('should render a list item per medium', () => {
         const mediaList = [
@@ -26,6 +19,14 @@ describe('MediaList', () => {
         const wrapper = shallow(<MediaList mediaList={mediaList}/>)
 
         expect(wrapper.find('tbody > tr').length).toEqual(2);
+    });
+
+    it('should print a head line', () => {
+        const wrapper = shallow(<MediaList mediaList={[]}/>);
+
+        expect(wrapper.find('thead > tr > th').at(0).text()).toEqual('Fällig');
+        expect(wrapper.find('thead > tr > th').at(1).text()).toEqual('Titel');
+        expect(wrapper.find('thead > tr > th').at(2).text()).toEqual('Verlängert');
     });
 
     it('should render a list of the given media', () => {
@@ -46,15 +47,13 @@ describe('MediaList', () => {
 
         const wrapper = shallow(<MediaList mediaList={mediaList}/>);
 
-        expect(wrapper.find('tbody > tr > td').at(0).text()).toEqual('1');
-        expect(wrapper.find('tbody > tr > td').at(1).text()).toEqual('2012-12-12');
-        expect(wrapper.find('tbody > tr > td').at(2).text()).toEqual('Some fancy cooking book');
-        expect(wrapper.find('tbody > tr > td').at(3).text()).toEqual('1');
+        expect(wrapper.find('tbody > tr > td').at(0).text()).toEqual('2012-12-12');
+        expect(wrapper.find('tbody > tr > td').at(1).text()).toEqual('Some fancy cooking book');
+        expect(wrapper.find('tbody > tr > td').at(2).text()).toEqual('1');
 
-        expect(wrapper.find('tbody > tr > td').at(4).text()).toEqual('2');
-        expect(wrapper.find('tbody > tr > td').at(5).text()).toEqual('2012-12-11');
-        expect(wrapper.find('tbody > tr > td').at(6).text()).toEqual('Some scarry horror movie');
-        expect(wrapper.find('tbody > tr > td').at(7).text()).toEqual('0');
+        expect(wrapper.find('tbody > tr > td').at(3).text()).toEqual('2012-12-11');
+        expect(wrapper.find('tbody > tr > td').at(4).text()).toEqual('Some scarry horror movie');
+        expect(wrapper.find('tbody > tr > td').at(5).text()).toEqual('0');
     });
 });
 
