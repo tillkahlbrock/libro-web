@@ -44,7 +44,10 @@ module.exports = function (config) {
                 root: path.resolve(path.join(__dirname, 'src')),
             },
             plugins: [
-                new webpack.NoErrorsPlugin()
+                new webpack.NoErrorsPlugin(),
+                new webpack.DefinePlugin({
+                    'SERVER_URL': JSON.stringify('something'),
+                }),
             ],
             externals: {
                 'react/lib/ExecutionEnvironment': true,

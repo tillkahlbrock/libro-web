@@ -11,8 +11,8 @@
     "start": "node index.js",
     "test": "node_modules/.bin/karma start --single-run --no-auto-watch karma.config.js",
     "test:watch": "node_modules/.bin/karma start --auto-watch --no-single-run karma.config.js",
-    "build": "NODE_ENV='development' node_modules/.bin/webpack --config webpack.config.js",
-    "build:watch": "NODE_ENV='development' node_modules/.bin/webpack --config webpack.config.js --watch"
+    "build": "SERVER_URL='http://localhost:3000' node_modules/.bin/webpack --config webpack.config.js",
+    "build:watch": "node_modules/.bin/webpack --config webpack.config.js --watch"
   },
   "author": "till.kahlbrock@gmail.com",
   "license": "ISC",

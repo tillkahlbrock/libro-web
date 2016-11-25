@@ -26,7 +26,8 @@ module.exports = {
             'process.env': {
                 'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
             },
-            'DEBUG': process.env.NODE_ENV === 'development'
+            'DEBUG': process.env.NODE_ENV !== 'production',
+            'SERVER_URL': JSON.stringify(process.env.SERVER_URL),
         }),
     ],
 };

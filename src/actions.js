@@ -1,3 +1,5 @@
+import { SERVER_BASE_URL } from './config';
+
 export const CHANGE_USERNAME_INPUT_REQUESTED = 'change username input requested';
 export const CHANGE_PASSWORD_INPUT_REQUESTED = 'change password input requested';
 export const FETCH_INITIAL_DATA_SUCCEEDED = 'fetch initial data succeeded';
@@ -28,13 +30,13 @@ export const login = () => (dispatch, getState) => {
 
 const fetchNewToken = (username, password) => {
     return fetch(
-        'http://localhost:3000/token/create',
+        SERVER_BASE_URL + '/token/create',
         { method: 'POST', body: JSON.stringify({ username, password }) }
     );
 };
 
 const fetchInitialData = token => {
-    const url = 'http://localhost:3000';
+    const url = SERVER_BASE_URL;
 
     const params = {
         method: 'POST',
