@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
         case actions.CHANGE_PASSWORD_INPUT_REQUESTED:
             return assign({}, state, { password: payload.text });
 
-        case actions.LOGIN_REQUESTED:
+        case actions.LOGIN_SUCCEEDED:
             return assign({}, state, { loggedIn: true });
 
         case actions.FETCH_INITIAL_DATA_SUCCEEDED:
