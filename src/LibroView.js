@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import reducer from './reducer';
 import Layout from './components/Layout';
+import { initApp } from './actions';
 
 export default class LibroView {
     constructor() {
@@ -17,6 +18,7 @@ export default class LibroView {
             }));
         }
         this.store = Redux.applyMiddleware(...middleware)(Redux.createStore)(reducer);
+        this.store.dispatch(initApp());
     }
 
     render(element) {

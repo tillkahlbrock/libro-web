@@ -24,6 +24,12 @@ export default (state = initialState, action) => {
         case actions.FETCH_INITIAL_DATA_SUCCEEDED:
             return assign({}, state, { mediaList: payload.mediaList });
 
+        case actions.TOKEN_LOADING_FAILED:
+            return assign({}, state, { loggedIn: false });
+
+        case actions.TOKEN_LOADING_SUCCEEDED:
+            return assign({}, state, { token: payload.token, loggedIn: true });
+
         default:
             return assign({}, state);
     }
